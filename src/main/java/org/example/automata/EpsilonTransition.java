@@ -8,7 +8,7 @@ public class EpsilonTransition implements iTransition {
     }
 
     @Override
-    public boolean nextState(String str) {
+    public State nextState(String str) {
         return reference.match(str);
     }
 

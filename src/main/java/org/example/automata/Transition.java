@@ -20,22 +20,18 @@ public class Transition implements iTransition {
     }
 
     @Override
-    public boolean nextState(String str) {
+    public State nextState(String str) {
         String aux = "";
         if (!str.isEmpty()) {
             aux = str.substring(1);
-
             if (charSet.contains(str.toCharArray()[0])) {
                 return reference.match(aux);
             }
 
-            return false;
+            return FiniteAutomaton.ERROR_STATE;
         }
 
-        if (recursive)
-            return !reference.hasNonRecursiveTransition();
-
-        return false;
+        return FiniteAutomaton.ERROR_STATE;
     }
 
     public boolean isRecursive() {

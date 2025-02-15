@@ -40,6 +40,6 @@ public class Main {
         FiniteAutomaton fa2 = new FiniteAutomaton(n0, n1);
 
         fa1.concatenate(fa2);
-        System.out.println(fa1.match("nosso0"));
+        System.out.println(fa1.match("novo5"));
     }
 }

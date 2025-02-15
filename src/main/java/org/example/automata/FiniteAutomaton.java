@@ -12,6 +12,7 @@ public class FiniteAutomaton {
     public final static char[] NUMBERS_NO_ZERO_CHARSET = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     public final static char[] LOWERCASE_ALPHABET_CHARSET = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     public final static char[] UPPERCASE_ALPHABET_CHARSET = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    public final static State ERROR_STATE = new State();
 
     public FiniteAutomaton(State initialState, State ...finalStates) {
         this.initialState = initialState;
@@ -35,7 +36,9 @@ public class FiniteAutomaton {
     }
 
     public boolean match(String str) {
-        return initialState.match(str);
+        State end = initialState.match(str);
+
+        return finalStates.contains(end);
     }
 
     public void concatenate(FiniteAutomaton f) {
