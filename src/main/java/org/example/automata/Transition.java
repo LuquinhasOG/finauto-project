@@ -21,17 +21,15 @@ public class Transition implements iTransition {
 
     @Override
     public State nextState(String str) {
-        String aux = "";
         if (!str.isEmpty()) {
-            aux = str.substring(1);
             if (charSet.contains(str.toCharArray()[0])) {
-                return reference.match(aux);
+                return reference.match(str.substring(1));
             }
 
-            return FiniteAutomaton.ERROR_STATE;
+            return State.ERROR_STATE;
         }
 
-        return FiniteAutomaton.ERROR_STATE;
+        return State.ERROR_STATE;
     }
 
     public boolean isRecursive() {

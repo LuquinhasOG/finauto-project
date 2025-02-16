@@ -7,6 +7,8 @@ public class State {
     private List<iTransition> transitions = new ArrayList<>();
     private String str;
 
+    public final static State ERROR_STATE = new State();
+
     public void add(iTransition transition) {
         transitions.add(transition);
     }
@@ -20,28 +22,10 @@ public class State {
 
         for (iTransition t : transitions) {
             State next = t.nextState(str);
-            if (!next.equals(FiniteAutomaton.ERROR_STATE))
+            if (!next.equals(ERROR_STATE))
                 return next;
         }
 
-        return FiniteAutomaton.ERROR_STATE;
-    }
-
-    public boolean hasRecursiveTransition() {
-        for (iTransition t : transitions) {
-            if (t.isRecursive())
-                return true;
-        }
-
-        return false;
-    }
-
-    public boolean hasNonRecursiveTransition() {
-        for (iTransition t : transitions) {
-            if (!t.isRecursive())
-                return true;
-        }
-
-        return false;
+        return ERROR_STATE;
     }
 }
