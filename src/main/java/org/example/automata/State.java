@@ -15,6 +15,9 @@ public class State {
         if (str.isEmpty() && transitions.isEmpty())
             return this;
 
+        if (str.isEmpty())
+            return this;
+
         for (iTransition t : transitions) {
             State next = t.nextState(str);
             if (!next.equals(FiniteAutomaton.ERROR_STATE))

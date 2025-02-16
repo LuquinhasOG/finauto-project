@@ -35,11 +35,12 @@ public class Main {
         Transition t7 = new Transition(FiniteAutomaton.NUMBERS_CHARSET, n1);
 
         n0.add(t7);
+        n1.add(t7);
 
         FiniteAutomaton fa1 = new FiniteAutomaton(s0, s4, s7);
         FiniteAutomaton fa2 = new FiniteAutomaton(n0, n1);
 
         fa1.concatenate(fa2);
-        System.out.println(fa1.match("novo5"));
+        System.out.println(fa1.match("novo898"));
     }
 }
